@@ -1,10 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResistorColorTest {
-
     private ResistorColor resistorColor;
 
     @BeforeEach
@@ -14,26 +13,37 @@ public class ResistorColorTest {
 
     @Test
     public void testBlackColorCode() {
-        assertThat(resistorColor.colorCode("black")).isEqualTo(0);
+        int expected = 0;
+
+        int actual = resistorColor.colorCode("black");
+
+        assertThat(actual).isEqualTo(expected);
     }
 
-//    @Disabled("Remove to run test")
     @Test
     public void testWhiteColorCode() {
-        assertThat(resistorColor.colorCode("white")).isEqualTo(9);
+        int expected = 9;
+
+        int actual = resistorColor.colorCode("white");
+
+        assertThat(actual).isEqualTo(expected);
     }
 
-//    @Disabled("Remove to run test")
     @Test
     public void testOrangeColorCode() {
-        assertThat(resistorColor.colorCode("orange")).isEqualTo(3);
+        int expected = 3;
+
+        int actual = resistorColor.colorCode("orange");
+
+        assertThat(actual).isEqualTo(expected);
     }
 
-//    @Disabled("Remove to run test")
     @Test
     public void testColors() {
-        assertThat(resistorColor.colors()).containsExactly(
-                "black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"
-        );
+        String[] strings = {"black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"};
+
+        String[] actual = resistorColor.colors();
+
+        assertThat(actual).containsExactly(strings);
     }
 }
