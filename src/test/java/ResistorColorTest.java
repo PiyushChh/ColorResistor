@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ResistorColorTest {
     private ResistorColor resistorColor;
@@ -44,5 +47,15 @@ public class ResistorColorTest {
         String[] actual = resistorColor.colors();
 
         assertThat(actual).containsExactly(strings);
+    }
+
+    @Test
+    public void testInvalidColor() {
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        Executable actualException = () ->
+                resistorColor.colorCode("hello");
+
+        assertThrows(expectedException, actualException);
     }
 }

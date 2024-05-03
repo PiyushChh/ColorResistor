@@ -18,14 +18,17 @@ class ResistorColor {
     }
 
     int colorCode(String color) {
+        if(!map.containsKey(color)){
+            throw new IllegalArgumentException("This color does not exist");
+        }
         return map.get(color);
     }
 
     String[] colors() {
         String[] colors = new String[map.size()];
-        int i = 0;
+        int idx = 0;
         for (Map.Entry<String, Integer> m : map.entrySet()) {
-            colors[i++] = m.getKey();
+            colors[idx++] = m.getKey();
         }
         return colors;
     }
